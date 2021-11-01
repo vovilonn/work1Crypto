@@ -8,6 +8,7 @@ const createBtn = document.querySelector("#createBtn");
 const createSharesBtn = document.querySelector("#createSharesBtn");
 const walletEl = document.querySelector("#wallet");
 const txModal = document.querySelector("#txModal");
+const jsonModal = document.querySelector("#jsonModal");
 
 const ethereum = window.ethereum;
 
@@ -75,29 +76,61 @@ async function switchBscNetwork() {
 
 async function create() {
     await validateNetwork();
-    const res = await contractInstance.create();
-    console.log(res);
+    const generateJson = (params) => {
+        alert(JSON.stringify(params));
+    };
+    const handleCreate = async (e) => {
+        try {
+            const target = e.target;
+            switch (target.id) {
+                case "closeModal":
+                    toggleModal(jsonModal, false, handleCreate);
+                    break;
+                case "submit": {
+                    const mp3Url = document.forms.jsonForm.mp3Url.value;
+                    const name = document.forms.jsonForm.name.value;
+                    const author = document.forms.jsonForm.author.value;
+                    const pressRelease = document.forms.jsonForm.pressRelease.value;
+                    const cover = document.forms.jsonForm.cover.value;
+                    const songText = document.forms.jsonForm.text.value;
+                    if (
+                        mp3Url !== "" &&
+                        name !== "" &&
+                        author !== "" &&
+                        pressRelease !== "" &&
+                        cover !== "" &&
+                        songText !== ""
+                    ) {
+                        //========handlers==========
+                        await contractInstance.create();
+                        generateJson({ mp3Url, name, author, pressRelease, cover, songText });
+                        //==========================
+                    } else {
+                        alert("Fill in all the fields!");
+                    }
+
+                    break;
+                }
+
+                default:
+                    break;
+            }
+        } catch (err) {
+            toggleModal(jsonModal, false, handleCreate);
+            console.error(err);
+        }
+    };
+    toggleModal(jsonModal, true, handleCreate);
 }
 
 function createSharesHandler() {
-    const toggleModal = (state, eventHandler) => {
-        if (state) {
-            txModal.addEventListener("click", eventHandler);
-            txModal.style.display = "block";
-        } else {
-            txModal.removeEventListener("click", eventHandler);
-            txModal.style.display = "none";
-        }
-    };
-
     const handleTransaction = async (e) => {
         await validateNetwork();
         const target = e.target;
-        console.log(target.id);
 
         switch (target.id) {
             case "closeModal":
-                toggleModal(false, handleTransaction);
+                toggleModal(txModal, false, handleTransaction);
                 break;
             case "submit": {
                 const tokenId = document.forms.txForm.tokenId.value;
@@ -107,7 +140,7 @@ function createSharesHandler() {
                     //========handlers==========
                     createShares(tokenId, amount, price);
                     //==========================
-                    toggleModal(false, handleTransaction);
+                    toggleModal(txModal, false, handleTransaction);
                 } else {
                     alert("Fill in all the fields!");
                 }
@@ -120,7 +153,7 @@ function createSharesHandler() {
         }
     };
 
-    toggleModal(true, handleTransaction);
+    toggleModal(txModal, true, handleTransaction);
 }
 
 async function createShares(tokenId, amount, price) {
@@ -133,6 +166,16 @@ async function createShares(tokenId, amount, price) {
         console.error(err);
     }
 }
+
+const toggleModal = (modal, state, eventHandler) => {
+    if (state) {
+        modal.addEventListener("click", eventHandler);
+        modal.style.display = "block";
+    } else {
+        modal.removeEventListener("click", eventHandler);
+        modal.style.display = "none";
+    }
+};
 
 function toggleView() {
     if (connected) {

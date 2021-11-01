@@ -64,7 +64,7 @@
                     <div class="modal-body">
                         <form class="form-group" name="txForm">
                             <input
-                                type="id"
+                                type="text"
                                 class="form-control"
                                 aria-label="Default"
                                 aria-describedby="inputGroup-sizing-default"
@@ -88,6 +88,78 @@
                                 placeholder="Price"
                                 name="price"
                             />
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" id="submit">Submit transaction</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="jsonModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Create Shares</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group" name="jsonForm">
+                            <input
+                                type="text"
+                                class="form-control"
+                                aria-label="Default"
+                                aria-describedby="inputGroup-sizing-default"
+                                placeholder="mp3 URL"
+                                name="mp3Url"
+                            />
+                            <input
+                                type="text"
+                                class="form-control mb-2 mt-2"
+                                aria-label="Default"
+                                aria-describedby="inputGroup-sizing-default"
+                                placeholder="Name"
+                                name="name"
+                            />
+                            <input
+                                type="text"
+                                class="form-control"
+                                aria-label="Default"
+                                aria-describedby="inputGroup-sizing-default"
+                                placeholder="Author"
+                                name="author"
+                            />
+                            <input
+                                type="text"
+                                class="form-control mb-2 mt-2"
+                                aria-label="Default"
+                                aria-describedby="inputGroup-sizing-default"
+                                placeholder="Press release"
+                                name="pressRelease"
+                            />
+                            <input
+                                type="text"
+                                class="form-control"
+                                aria-label="Default"
+                                aria-describedby="inputGroup-sizing-default"
+                                placeholder="Cover"
+                                name="cover"
+                            />
+
+                            <textarea
+                                id="form7"
+                                class="md-textarea form-control mt-2"
+                                rows="3"
+                                placeholder="Song Text"
+                                name="text"
+                            ></textarea>
+                            <label for="form7">Material textarea</label>
                         </form>
                     </div>
                     <div class="modal-footer">
