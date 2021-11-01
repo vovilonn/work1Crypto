@@ -1,0 +1,12 @@
+
+.blok1, .blok2, .blok3, .blok4{
+    float:left;
+    margin:3px 3px 3px 5px;
+    background: #F0FCE8;
+    width:200px;
+    height:200px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: rgba(0,0,0,1.2) 0px 1px 3px;
+}

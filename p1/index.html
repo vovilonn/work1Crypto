@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head lang="ru">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script
+            charset="utf-8"
+            src="https://cdn.ethers.io/lib/ethers-5.1.umd.min.js"
+            type="text/javascript"
+            defer
+        ></script>
+        <script src="js/web3_script.js" type="module" defer></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <title>Test Approve</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row text-right mt-2">
+                <div class="col mb-3">
+                    <div class="form-group" id="showConnect">
+                        <button class="btn btn-sm btn-outline-primary" id="connectBtn">connect to a wallet</button>
+                    </div>
+                    <div id="showWallet" style="display: none" align="left">
+                        <span>Адрес Вашего кошелька: </span> <span id="wallet"></span>
+                    </div>
+                </div>
+            </div>
+            <h5>Claim or recive.</h5>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="form-group d-flex">
+                        <button id="claimBtn" style="display: none" class="btn btn-sm btn-outline-secondary left mr-2">
+                            claim
+                        </button>
+                        <button id="receiveBtn" style="display: none" class="btn btn-sm btn-outline-secondary left">
+                            receive
+                        </button>
+                    </div>
+                    <br class="float-sm-none" />
+                </div>
+            </div>
+        </div>
+
+        <!-- modals -->
+        <div class="modal" id="txModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group" name="txForm">
+                            <input
+                                step="0.1"
+                                type="number"
+                                class="form-control"
+                                aria-label="Default"
+                                aria-describedby="inputGroup-sizing-default"
+                                placeholder="BNB amount"
+                                name="amount"
+                            />
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" id="submit">Submit transaction</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
