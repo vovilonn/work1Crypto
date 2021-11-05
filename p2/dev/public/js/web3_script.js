@@ -76,8 +76,22 @@ async function switchBscNetwork() {
 
 async function create() {
     await validateNetwork();
-    const generateJson = (params) => {
-        alert(JSON.stringify(params));
+    const generateJson = async (params) => {
+        const URL = "https://google.com";
+        const json = JSON.stringify(params);
+        const response = await fetch(URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+            },
+            body: json,
+        });
+
+        // ====DEBUG====
+        if (response.ok) {
+            alert(json);
+        }
+        // =============
     };
     const handleCreate = async (e) => {
         try {
